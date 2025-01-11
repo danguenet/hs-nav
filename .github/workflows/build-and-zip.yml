@@ -33,7 +33,7 @@ jobs:
 
       # 5. Upload the zip as an artifact
       - name: Upload zip artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: chrome-extension
           path: build/extension.zip
