@@ -25,12 +25,23 @@ jobs:
       # - name: Build extension
       #   run: npm run build
 
-      # 4. Create the zip file
+      # 4. Create a directory named 'hs-nav' for the zip contents
+      - name: Prepare files for zip
+        run: |
+          mkdir -p hs-nav  # Create a clean directory
+          cp -R ./* hs-nav/  # Copy all files to the 'hs-nav' directory
+          rm -rf hs-nav/.git  # Exclude the .git directory
+          rm -rf hs-nav/node_modules  # Exclude node_modules
+          rm -rf hs-nav/.github  # Exclude .github folder
+          rm -rf hs-nav/icons/search.png  # Exclude search.png
+
+      # 5. Create the zip file
       - name: Create zip file
         run: |
-          zip -r hs-nav.zip . -x "*.git*" "*.DS_Store" "node_modules/*" ".github/*"
+          cd hs-nav
+          zip -r ../hs-nav.zip ./*
 
-      # 5. Upload the zip as an artifact
+      # 6. Upload the zip as an artifact
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
