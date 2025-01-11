@@ -3,49 +3,35 @@ name: Build and Zip Chrome Extension
 on:
   push:
     branches:
-      - main  # Run on pushes to the main branch
-  workflow_dispatch:  # Allow manual runs
+      - main
+  workflow_dispatch:
 
 jobs:
   build-and-zip:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Install dependencies (if any)
-      # Uncomment if your extension has a build step (e.g., Webpack, Vite)
+      # Uncomment if needed
       # - name: Install dependencies
       #   run: npm ci
-
-      # 3. Build the extension (if applicable)
-      # Uncomment and update if using a build tool
+      
       # - name: Build extension
       #   run: npm run build
 
-      # 4. Create a directory named 'hs-nav' for the zip contents
-      - name: Prepare files for zip
-        run: |
-          mkdir -p hs-nav  # Create a clean directory
-          rsync -av \
-            --exclude='hs-nav' \
-            --exclude='.git' \
-            --exclude='node_modules' \
-            --exclude='.github' \
-            --exclude='icons/search.png' \
-            --exclude='README.md' \
-            --exclude='LICENSE' \
-            ./ hs-nav/
-
-      # 5. Create the zip file (include only the contents of 'hs-nav')
+      # Create zip file directly from current directory
       - name: Create zip file
         run: |
-          cd hs-nav
-          zip -r ../hs-nav.zip ./*
+          zip -r hs-nav.zip . \
+          -x "*.git*" \
+          -x "node_modules/**" \
+          -x ".github/**" \
+          -x "icons/search.png" \
+          -x "README.md" \
+          -x "LICENSE"
 
-      # 6. Upload the zip as an artifact
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
