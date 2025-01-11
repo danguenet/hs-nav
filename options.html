@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>HS Nav Options</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    .pair {
+      margin-bottom: 10px;
+    }
+    label {
+      display: inline-block;
+      width: 80px;
+    }
+    input {
+      padding: 4px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>HS Nav Options</h1>
+
+  <h2>Keyboard Shortcut</h2>
+  <p>
+    If <strong>Command+Shift+K</strong> (macOS) or <strong>Ctrl+Shift+K</strong> (Windows/Linux)
+    isn't working, go to <code>chrome://extensions/shortcuts</code> and set the shortcut for
+    <em>HS Nav</em> there.
+  </p>
+
+  <h2>Your Custom Links</h2>
+  <div id="navPairs"></div>
+
+  <h3>Add New Link</h3>
+  <div>
+    <input type="text" id="newKeyword" placeholder="Keyword" />
+    <input type="text" id="newPath" placeholder="Path (use INSTANCE_ID)" />
+    <button id="addBtn">Add</button>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

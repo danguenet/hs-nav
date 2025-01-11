@@ -1,0 +1,300 @@
+{
+  "navigation": [ 
+    {
+      "keyword": "Accounts",
+      "path": "/myaccounts-beta"
+    },
+    {
+      "keyword": "Prospecting",
+      "path": "/prospecting/INSTANCE_ID"
+    },
+    {
+      "keyword": "Help Desk",
+      "path": "/help-desk/INSTANCE_ID"
+    },
+    {
+      "keyword": "Contacts",
+      "path": "/contacts/INSTANCE_ID/objects/0-1"
+    },
+    {
+      "keyword": "Companies",
+      "path": "/contacts/INSTANCE_ID/objects/0-2"
+    },
+    {
+      "keyword": "Deals",
+      "path": "/contacts/INSTANCE_ID/objects/0-3"
+    },
+    {
+      "keyword": "Tickets",
+      "path": "/contacts/INSTANCE_ID/objects/0-5"
+    },
+    {
+      "keyword": "Lists",
+      "path": "/contacts/INSTANCE_ID/objectLists"
+    },
+    {
+      "keyword": "Inbox",
+      "path": "/live-messages/INSTANCE_ID"
+    },
+    {
+      "keyword": "Calls",
+      "path": "/contacts/INSTANCE_ID/objects/0-48"
+    },
+    {
+      "keyword": "Tasks",
+      "path": "/tasks/INSTANCE_ID"
+    },
+    {
+      "keyword": "Campaigns",
+      "path": "/marketing/INSTANCE_ID/campaigns"
+    },
+    {
+      "keyword": "Email",
+      "path": "/email/INSTANCE_ID"
+    },
+    {
+      "keyword": "Social",
+      "path": "/social/INSTANCE_ID"
+    },
+    {
+      "keyword": "Ads",
+      "path": "/ads/INSTANCE_ID"
+    },
+    {
+      "keyword": "Events",
+      "path": "/contacts/INSTANCE_ID/objects/0-54"
+    },
+    {
+      "keyword": "Forms",
+      "path": "/forms/INSTANCE_ID"
+    },
+    {
+      "keyword": "CTAs",
+      "path": "/calls-to-action/INSTANCE_ID"
+    },
+    {
+      "keyword": "Buyer Intent",
+      "path": "/buyer-intent/INSTANCE_ID"
+    },
+    {
+      "keyword": "Lead Scoring",
+      "path": "/lead-scoring/INSTANCE_ID"
+    },
+    {
+      "keyword": "Website Pages",
+      "path": "/website/INSTANCE_ID"
+    },
+    {
+      "keyword": "Landing Pages",
+      "path": "/website/INSTANCE_ID/pages/landing"
+    },
+    {
+      "keyword": "Blog",
+      "path": "/website/INSTANCE_ID/blog"
+    },
+    {
+      "keyword": "Knowledge Base",
+      "path": "/knowledge/INSTANCE_ID"
+    },
+    {
+      "keyword": "Customer Portal",
+      "path": "/settings/INSTANCE_ID/customer-portal"
+    },
+    {
+      "keyword": "HubDB",
+      "path": "/hubdb/INSTANCE_ID"
+    },
+    {
+      "keyword": "SEO",
+      "path": "/content-strategy/INSTANCE_ID"
+    },
+    {
+      "keyword": "Memberships",
+      "path": "/memberships/INSTANCE_ID"
+    },
+    {
+      "keyword": "Design Manager",
+      "path": "/design-manager/INSTANCE_ID"
+    },
+    {
+      "keyword": "Commerce - Overview",
+      "path": "/commerce/INSTANCE_ID"
+    },
+    {
+      "keyword": "Invoices",
+      "path": "/contacts/INSTANCE_ID/objects/0-53"
+    },
+    {
+      "keyword": "Payment Links",
+      "path": "/payment-links/INSTANCE_ID"
+    },
+    {
+      "keyword": "Quotes",
+      "path": "/quotes/INSTANCE_ID"
+    },
+    {
+      "keyword": "Products",
+      "path": "/contacts/INSTANCE_ID/objects/0-7"
+    },
+    {
+      "keyword": "Workflows",
+      "path": "/workflows/INSTANCE_ID"
+    },
+    {
+      "keyword": "Sequences",
+      "path": "/sequences/INSTANCE_ID"
+    },
+    {
+      "keyword": "Chatflows",
+      "path": "/chatflows/INSTANCE_ID"
+    },
+    {
+      "keyword": "Surveys",
+      "path": "/feedback/INSTANCE_ID"
+    },
+    {
+      "keyword": "Dashboards",
+      "path": "/reports-dashboard/INSTANCE_ID"
+    },
+    {
+      "keyword": "Reports",
+      "path": "/reports-list/INSTANCE_ID"
+    },
+    {
+      "keyword": "Reports - Sales Analytics",
+      "path": "/reports-list/INSTANCE_ID/templates/sales"
+    },
+    {
+      "keyword": "Reports - Service Analytics",
+      "path": "/reports-list/INSTANCE_ID/templates/service"
+    },
+    {
+      "keyword": "Forecasts",
+      "path": "/forecasting/INSTANCE_ID"
+    },
+    {
+      "keyword": "Goals",
+      "path": "/goals/INSTANCE_ID"
+    },
+    {
+      "keyword": "Integrations",
+      "path": "/integrations-settings/INSTANCE_ID"
+    },
+    {
+      "keyword": "Custom Events",
+      "path": "/events/INSTANCE_ID"
+    },
+    {
+      "keyword": "Data Quality",
+      "path": "/data-quality/INSTANCE_ID"
+    },
+    {
+      "keyword": "Datasets",
+      "path": "/reporting-datasets/INSTANCE_ID/datasets"
+    },
+    {
+      "keyword": "Data Model",
+      "path": "/data-model-overview/INSTANCE_ID"
+    },
+    {
+      "keyword": "Data Enrichment",
+      "path": "/settings/INSTANCE_ID/enrichment"
+    },
+    {
+      "keyword": "Templates",
+      "path": "/templates/INSTANCE_ID"
+    },
+    {
+      "keyword": "Meeting Scheduler",
+      "path": "/meetings/INSTANCE_ID"
+    },
+    {
+      "keyword": "Files",
+      "path": "/files/INSTANCE_ID"
+    },
+    {
+      "keyword": "Documents",
+      "path": "/documents/INSTANCE_ID"
+    },
+    {
+      "keyword": "Playbooks",
+      "path": "/playbooks/INSTANCE_ID"
+    },
+    {
+      "keyword": "Snippets",
+      "path": "/snippets/INSTANCE_ID"
+    },
+    {
+      "keyword": "Coaching Playlists",
+      "path": "/playlists/INSTANCE_ID"
+    },
+    {
+      "keyword": "Breeze AI - Overview",
+      "path": "/breeze-ai/INSTANCE_ID"
+    },
+    {
+      "keyword": "Breeze AI - Customer Agent",
+      "path": "/customer-agent/INSTANCE_ID/onboarding"
+    },
+    {
+      "keyword": "CRM Development",
+      "path": "/developer-home/INSTANCE_ID"
+    },
+    {
+      "keyword": "App Marketplace",
+      "path": "/ecosystem/INSTANCE_ID/marketplace/apps"
+    },
+    {
+      "keyword": "Template Marketplace",
+      "path": "/ecosystem/INSTANCE_ID/marketplace/templates"
+    },
+    {
+      "keyword": "Agency Marketplace",
+      "path": "/ecosystem/INSTANCE_ID/marketplace/solutions"
+    },
+    {
+      "keyword": "Support Inbox",
+      "path": "/support-inbox/INSTANCE_ID/?source=in-app-help"
+    },
+    {
+      "keyword": "Profile",
+      "path": "/user-preferences/INSTANCE_ID/profile"
+    },
+    {
+      "keyword": "Account & Billing",
+      "path": "/account-and-billing/INSTANCE_ID/overview"
+    },
+    {
+      "keyword": "Product Updates",
+      "path": "/product-updates/INSTANCE_ID/new-to-you"
+    },
+    {
+      "keyword": "Projects",
+      "path": "/projects/INSTANCE_ID"
+    },
+    {
+      "keyword": "Settings",
+      "path": "/settings/INSTANCE_ID"
+    },
+    {
+      "keyword": "Users & Teams",
+      "path": "/settings/INSTANCE_ID/users"
+    },
+    {
+      "keyword": "Connected Apps",
+      "path": "/integrations-settings/INSTANCE_ID/installed"
+    },
+    {
+      "keyword": "Private Apps",
+      "path": "/private-apps/INSTANCE_ID"
+    },
+    {
+      "keyword": "Property Settings",
+      "path": "/property-settings/INSTANCE_ID/properties"
+    },
+    {
+      "keyword": "Tracking URLs",
+      "path": "/settings/INSTANCE_ID/tracking-urls"
+    }
+  ]
+}

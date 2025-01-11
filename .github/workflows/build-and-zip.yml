@@ -1,0 +1,39 @@
+name: Build and Zip Chrome Extension
+
+on:
+  push:
+    branches:
+      - main  # Run on pushes to the main branch
+  workflow_dispatch:  # Allow manual runs
+
+jobs:
+  build-and-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Install dependencies (if any)
+      # Uncomment if your extension has a build step (e.g., Webpack, Vite)
+      # - name: Install dependencies
+      #   run: npm ci
+
+      # 3. Build the extension (if applicable)
+      # Uncomment and update if using a build tool
+      # - name: Build extension
+      #   run: npm run build
+
+      # 4. Create the zip file
+      - name: Create zip file
+        run: |
+          mkdir -p build  # Ensure the build directory exists
+          zip -r build/extension.zip . -x "*.git*" "*.DS_Store" "node_modules/*" ".github/*"
+
+      # 5. Upload the zip as an artifact
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: chrome-extension
+          path: build/extension.zip
