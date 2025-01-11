@@ -35,11 +35,11 @@ jobs:
       - name: Create zip file
         run: |
           cd hs-nav
-          zip -r ../hs-nav.zip ./*
+          zip -r ../hs-nav-zip.zip ./*
 
       # 6. Upload the zip as an artifact
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
           name: hs-nav
-          path: hs-nav.zip
+          path: hs-nav-zip.zip
