@@ -28,12 +28,11 @@ jobs:
       # 4. Create the zip file
       - name: Create zip file
         run: |
-          mkdir -p build  # Ensure the build directory exists
-          zip -r build/extension.zip . -x "*.git*" "*.DS_Store" "node_modules/*" ".github/*"
+          zip -r hs-nav.zip . -x "*.git*" "*.DS_Store" "node_modules/*" ".github/*"
 
       # 5. Upload the zip as an artifact
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: chrome-extension
-          path: build/extension.zip
+          name: hs-nav
+          path: hs-nav.zip
