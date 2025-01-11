@@ -29,7 +29,7 @@ jobs:
       - name: Prepare files for zip
         run: |
           mkdir -p hs-nav  # Create a clean directory
-          rsync -av --exclude='hs-nav' --exclude='.git' --exclude='node_modules' --exclude='.github' --exclude='icons/search.png' ./ hs-nav/
+          rsync -av --exclude='hs-nav' --exclude='.git' --exclude='node_modules' --exclude='.github' --exclude='icons/search.png' --exclude='README.md' ./ hs-nav/
 
       # 5. Create the zip file
       - name: Create zip file
