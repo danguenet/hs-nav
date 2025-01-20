@@ -3,23 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>HS Nav Options</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-    }
-    .pair {
-      margin-bottom: 10px;
-    }
-    label {
-      display: inline-block;
-      width: 80px;
-    }
-    input {
-      padding: 4px;
-      margin-right: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="options.css">
 </head>
 <body>
   <h1>HS Nav Options</h1>
@@ -31,20 +15,22 @@
     <em>HS Nav</em> there.
   </p>
 
-  <h2>Your Custom Links</h2>
+  <h2>Add New Link</h2>
   <p>
     Keyword is going to be the word you search for. Path is the URL you want to go to. If your URL is 
     https://app.hubspot.com/contacts/XXXXXXXX/objects/0-1, you want to remove https://app.hubspot.com 
-    and replace XXXXXXXX with INSTANCE_ID. So your path would be /contacts/INSTANCE_ID/objects/0-1.
+    and replace XXXXXXXX with INSTANCE_ID. So your path would be /contacts/INSTANCE_ID/objects/0-1. 
+    If you want to replace a default keyword, just add the same keyword here and it will override the default.
   </p>
-  <div id="navPairs"></div>
-
-  <h3>Add New Link</h3>
   <div>
     <input type="text" id="newKeyword" placeholder="Keyword" />
-    <input type="text" id="newPath" placeholder="Path (use INSTANCE_ID)" />
+    <span>https://app.hubspot.com</span>
+    <input type="text" id="newPath" placeholder="Path" />
     <button id="addBtn">Add</button>
   </div>
+
+  <h2>Your Custom Links</h2>
+  <div id="navPairs"></div>
 
   <script src="options.js"></script>
 </body>

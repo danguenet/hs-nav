@@ -22,18 +22,23 @@ function renderNavPairs(customLinks) {
       <input type="text" data-index="${index}" data-field="keyword" value="${item.keyword}"/>
       <label>Path:</label>
       <input type="text" data-index="${index}" data-field="path" value="${item.path}"/>
+      <button data-index="${index}" class="updateBtn">Update</button>
       <button data-index="${index}" class="deleteBtn">Delete</button>
     `;
     navPairsContainer.appendChild(div);
   });
 
-  // Attach event listeners to each input
+  // Attach event listeners to inputs, update, and delete buttons
   const inputs = navPairsContainer.querySelectorAll("input");
   inputs.forEach(input => {
     input.addEventListener("change", onPairChange);
   });
 
-  // And each Delete button
+  const updateButtons = navPairsContainer.querySelectorAll(".updateBtn");
+  updateButtons.forEach(btn => {
+    btn.addEventListener("click", onUpdatePair);
+  });
+
   const delButtons = navPairsContainer.querySelectorAll(".deleteBtn");
   delButtons.forEach(btn => {
     btn.addEventListener("click", onDeletePair);
@@ -50,6 +55,26 @@ function onPairChange(e) {
     const customLinks = items.hubspotNavDataCustom || [];
     customLinks[index][field] = newValue;
     chrome.storage.sync.set({ hubspotNavDataCustom: customLinks });
+  });
+}
+
+// When user clicks "Update"
+function onUpdatePair(e) {
+  const index = e.target.getAttribute("data-index");
+  const keywordInput = navPairsContainer.querySelector(`input[data-index="${index}"][data-field="keyword"]`);
+  const pathInput = navPairsContainer.querySelector(`input[data-index="${index}"][data-field="path"]`);
+  
+  const updatedKeyword = keywordInput.value.trim();
+  const updatedPath = pathInput.value.trim();
+
+  if (!updatedKeyword || !updatedPath) return;
+
+  chrome.storage.sync.get("hubspotNavDataCustom", (items) => {
+    const customLinks = items.hubspotNavDataCustom || [];
+    customLinks[index] = { keyword: updatedKeyword, path: updatedPath };
+    chrome.storage.sync.set({ hubspotNavDataCustom: customLinks }, () => {
+      loadCustomLinks(); // refresh the list
+    });
   });
 }
 
