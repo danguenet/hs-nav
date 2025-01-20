@@ -43,7 +43,7 @@ To quickly **navigate** to "Lists," "Contacts," "Deals," or any other major sect
 
 ## Installation
 
-1. Download the HS Nav extension from the [Chrome Web Store](#).
+1. Download the HS Nav extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/hs-nav/kgnoogdidhnefkepigajbifecfhajged).
 2. Enable the extension in Chrome.
 3. Start navigating HubSpot faster than ever!
 
