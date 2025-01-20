@@ -6,6 +6,8 @@ Quickly navigate within HubSpot.
 
 HubSpot's default search is great for finding records, but not for other types of navigation. It can take multiple clicks to locate "Lists," "Campaigns," or other key sections of the app. **HS Nav** is a Chrome extension designed to solve that problem. With a simple shortcut, you can pull up a search bar and jump directly to where you need to go.
 
+---
+
 ## Default Shortcuts
 
 - **Open HS Nav**:
@@ -62,3 +64,31 @@ To quickly **navigate** to "Lists," "Contacts," "Deals," or any other major sect
 
 4. **Add Custom Links** *(Optional)*:  
    Use the extension options to add or update shortcuts to tailor the experience to your needs.
+
+---
+
+## Contributions
+
+I am open to contributions on this project. The easiest contribution is updating the default links in the project. You have two options on how to do that. 
+
+1. Pull Request (Preferred)
+   - Open the [navigation.json file](https://github.com/danguenet/hs-nav/blob/main/navigation.json).
+   - Fork the repository and make any necessary changes to the navigation.json.
+   - Create a pull request that describes the link(s) you’ve added or updated.
+
+2. Issue
+   - Open a [new issue](https://github.com/danguenet/hs-nav/issues).
+   - Clearly outline what link is missing or incorrect.
+   - Provide the correct or updated URL.
+
+I’m also interested in improving the overall user experience (UX). However, before you invest time in a UX change:
+
+1. Reach out first
+   - Create an issue or start a discussion describing the proposed UX change.
+   - Let’s confirm that this direction is something we want to pursue.
+
+2. Pull Request
+   - Once we agree on a solution or approach, you can create your pull request.
+   - Include details on what has changed and why.
+
+Thank you for helping improve this project! If you have any questions or concerns, feel free to open an issue or start a discussion.
