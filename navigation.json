@@ -9,7 +9,11 @@
       "path": "/prospecting/INSTANCE_ID"
     },
     {
-      "keyword": "Help Desk",
+      "keyword": "Sales - Workspace",
+      "path": "/prospecting/INSTANCE_ID"
+    },
+    {
+      "keyword": "Help Desk - Workspace",
       "path": "/help-desk/INSTANCE_ID"
     },
     {
