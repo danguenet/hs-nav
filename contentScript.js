@@ -91,6 +91,8 @@ function initUI() {
 
   // === 6) Event listeners for input, etc.
   inputElement.addEventListener("input", onSearchInput);
+
+  // Handle Enter/Escape/ArrowDown/Tab from the input
   inputElement.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -98,6 +100,26 @@ function initUI() {
     } else if (event.key === "Escape") {
       event.preventDefault();
       toggleUI(false);
+    } else if (event.key === "ArrowDown") {
+      // Move focus to the first suggestion item (if any)
+      const items = suggestionBox.querySelectorAll(".hs-nav-suggestion-item");
+      if (items.length > 0) {
+        event.preventDefault();
+        items[0].focus();
+      }
+    } else if (event.key === "Tab") {
+      // We want to keep focus cycling through suggestions
+      const items = suggestionBox.querySelectorAll(".hs-nav-suggestion-item");
+      if (items.length > 0) {
+        event.preventDefault();
+
+        // If SHIFT + Tab, go to the last item, else go to the first item
+        if (event.shiftKey) {
+          items[items.length - 1].focus();
+        } else {
+          items[0].focus();
+        }
+      }
     }
   });
 
@@ -183,11 +205,57 @@ function renderSuggestions(results) {
         selectSuggestion(result.keyword);
       } else if (evt.key === "Escape") {
         toggleUI(false);
+      } 
+      // Up/Down arrow cycling
+      else if (evt.key === "ArrowDown") {
+        evt.preventDefault();
+        focusNextSuggestion(div);
+      } else if (evt.key === "ArrowUp") {
+        evt.preventDefault();
+        focusPrevSuggestion(div);
+      }
+      // Tab/Shift+Tab cycling
+      else if (evt.key === "Tab") {
+        evt.preventDefault();
+        if (evt.shiftKey) {
+          focusPrevSuggestion(div);
+        } else {
+          focusNextSuggestion(div);
+        }
       }
     });
 
     suggestionBox.appendChild(div);
   });
+}
+
+/** 
+ * Move focus to the next suggestion item, or wrap back to the first 
+ */
+function focusNextSuggestion(currentItem) {
+  const items = Array.from(suggestionBox.querySelectorAll(".hs-nav-suggestion-item"));
+  const currentIndex = items.indexOf(currentItem);
+  let nextIndex = currentIndex + 1;
+  if (nextIndex >= items.length) {
+    nextIndex = 0; // wrap around if at the bottom
+  }
+  items[nextIndex].focus();
+}
+
+/** 
+ * Move focus to the previous suggestion item, or go back to input if at the first 
+ */
+function focusPrevSuggestion(currentItem) {
+  const items = Array.from(suggestionBox.querySelectorAll(".hs-nav-suggestion-item"));
+  const currentIndex = items.indexOf(currentItem);
+  let prevIndex = currentIndex - 1;
+
+  // If user presses up or Shift+Tab on the first item, focus goes back to the input
+  if (prevIndex < 0) {
+    inputElement.focus();
+    return;
+  }
+  items[prevIndex].focus();
 }
 
 function selectSuggestion(keyword) {
