@@ -166,14 +166,16 @@ function onSearchInput(e) {
     return;
   }
 
-  // Retrieve combined data (defaults + custom) or just one set
+  // Retrieve navigation data (defaults + custom)
   chrome.storage.sync.get(["hubspotNavDataDefaults", "hubspotNavDataCustom"], (items) => {
     const defaults = items.hubspotNavDataDefaults || [];
     const custom = items.hubspotNavDataCustom || [];
-    const combined = [...defaults, ...custom];
+    // Merge custom over defaults (custom items overwrite any default with the same keyword)
+    const customKeywords = new Set(custom.map(item => item.keyword.toLowerCase()));
+    const merged = [...custom, ...defaults.filter(item => !customKeywords.has(item.keyword.toLowerCase()))];
 
-    // Filter
-    const results = combined.filter(item =>
+    // Filter suggestions based on input
+    const results = merged.filter(item =>
       item.keyword.toLowerCase().includes(value)
     );
     renderSuggestions(results);
@@ -269,19 +271,21 @@ function handleSelection() {
   chrome.storage.sync.get(["hubspotNavDataDefaults", "hubspotNavDataCustom"], (items) => {
     const defaults = items.hubspotNavDataDefaults || [];
     const custom = items.hubspotNavDataCustom || [];
-    const combined = [...defaults, ...custom];
+    // Merge custom over defaults so that custom items with the same keyword override defaults
+    const customKeywords = new Set(custom.map(item => item.keyword.toLowerCase()));
+    const merged = [...custom, ...defaults.filter(item => !customKeywords.has(item.keyword.toLowerCase()))];
 
-    const match = combined.find(item => item.keyword.toLowerCase() === value);
+    const match = merged.find(item => item.keyword.toLowerCase() === value);
     if (match) {
       const instanceId = getInstanceIdFromUrl(window.location.href);
       let newUrl;
 
       if (instanceId) {
-        // Replace INSTANCE_ID in the matched path
-        newUrl = `https://app.hubspot.com${match.path.replace("INSTANCE_ID", instanceId)}`;
+        // Replace INSTANCE_ID in the matched path using the current origin (whether default or subdomain)
+        newUrl = `${window.location.origin}${match.path.replace("INSTANCE_ID", instanceId)}`;
       } else {
         // Redirect to /myaccounts-beta if no instance ID is found
-        newUrl = `https://app.hubspot.com/myaccounts-beta`;
+        newUrl = `${window.location.origin}/myaccounts-beta`;
       }
 
       window.location.href = newUrl;

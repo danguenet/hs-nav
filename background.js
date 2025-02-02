@@ -27,7 +27,7 @@ chrome.commands.onCommand.addListener(async (command) => {
   if (command === "open_search_bar") {
     // Find the current active tab
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (tab && tab.url.includes("app.hubspot.com")) {
+    if (tab && /^https:\/\/(app\.hubspot\.com|app-eu1\.hubspot\.com)\//.test(tab.url)) {
       chrome.tabs.sendMessage(tab.id, { action: "toggle-search-bar" });
     }
   }
@@ -35,7 +35,7 @@ chrome.commands.onCommand.addListener(async (command) => {
 
 // Listen for the browser action click and toggle the search bar
 chrome.action.onClicked.addListener(async (tab) => {
-  if (tab?.url?.includes("app.hubspot.com")) {
+  if (tab?.url && /^https:\/\/(app\.hubspot\.com|app-eu1\.hubspot\.com)\//.test(tab.url)) {
     chrome.tabs.sendMessage(tab.id, { action: "toggle-search-bar" });
   } else {
     // Optionally, let the user know they need to be on a HubSpot page.
