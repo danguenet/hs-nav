@@ -17,7 +17,7 @@ HubSpot's default search is great for finding records, but not for other types o
   - Windows/Linux: `Ctrl+K`
   - macOS: `Command+K`
 
-If you're looking for the **default HubSpot search** to find specific record, use `Command+K` on macOS or `Ctrl+K` on other systems.  
+If you're looking for the **default HubSpot search** to find specific records, use `Command+K` on macOS or `Ctrl+K` on other systems.  
 To quickly **navigate** to "Lists," "Contacts," "Deals," or any other major section in HubSpot, simply add a `Shift` to that combination to activate **HS Nav**.
 
 ---
