@@ -1,0 +1,41 @@
+{
+  "name": "hs-nav",
+  "version": "2.0.0",
+  "description": "Keyboard-first navigation for HubSpot.",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://github.com/danguenet/hs-nav#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danguenet/hs-nav.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danguenet/hs-nav/issues"
+  },
+  "keywords": [
+    "chrome-extension",
+    "hubspot",
+    "navigation",
+    "productivity"
+  ],
+  "type": "module",
+  "packageManager": "npm@10.9.7",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "audit:navigation": "node scripts/audit-navigation.mjs",
+    "audit:navigation:check": "node scripts/audit-navigation.mjs --check",
+    "test": "node --test test/*.test.mjs",
+    "lint": "eslint . --max-warnings=0",
+    "test:browser": "node test/browser/smoke.mjs",
+    "verify:package": "node scripts/verify-package.mjs",
+    "check": "npm run lint && npm test && npm run audit:navigation:check && npm run build && npm run verify:package && npm run test:browser"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1",
+    "eslint": "^10.8.0",
+    "playwright-core": "^1.62.0"
+  }
+}

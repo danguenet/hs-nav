@@ -2,62 +2,41 @@
 
 **Performance RevOps LLC dba HS Nav**
 
-Last Updated: Jan 12, 2025
+Last updated: July 27, 2026
 
-## Introduction
+HS Nav is a Chrome extension for navigating within HubSpot. This policy describes the data the extension processes, where it is stored, and when it leaves the browser.
 
-Performance RevOps LLC, doing business as HS Nav ("we," "us," or "our"), is committed to protecting your privacy. This Privacy Policy explains how our Chrome extension, **HS Nav**, handles your data and what measures we take to ensure your privacy and security.
+## Data handling
 
----
+HS Nav does not operate a server, include analytics or advertising, or send extension usage data to Performance RevOps LLC.
 
-## Data Collection and Usage
+The extension processes the current HubSpot page URL to identify the active account and build the destination selected by the user. It stores:
 
-We do **not** collect, store, or transmit any personal or sensitive data. HS Nav operates entirely on your local device, using Chrome's local storage to manage settings and preferences. Specifically:
+- the bundled route catalog, recent destination identifiers, and remembered HubSpot account IDs in Chrome local storage;
+- custom destinations and favorites in Chrome sync storage when browser sync is enabled; and
+- a short-lived route attempt in Chrome session storage so the destination page can show navigation feedback.
 
-- **Local Storage**: User preferences, such as custom navigation links or shortcut configurations, are stored locally in Chrome's storage and are not transmitted to any external servers.
-- **No External Communication**: The extension does not send or receive any data from external servers, third-party services, or any other entities.
+Custom destinations are user-provided and can include a HubSpot account ID, query parameters, or other information contained in the pasted URL. Users should avoid saving secrets or unnecessary personal information in a custom destination. Chrome, not HS Nav, operates the browser sync service and controls its retention and transmission.
 
----
+## Optional route reports
+
+For a maintained route that appears stale, the extension can open a GitHub issue form after the user clicks **Report route**. Before opening GitHub, HS Nav removes query strings and fragments and replaces long numeric path segments with `INSTANCE_ID`. GitHub receives the sanitized route diagnostics in the issue-form URL when the report link is opened; the user can review or discard the issue before submitting it. HS Nav does not offer public issue reporting for custom destinations.
 
 ## Permissions
 
-To function effectively, HS Nav requires certain permissions within your Chrome browser:
+- **`storage`** stores the local, synced, and session data described above.
+- **HubSpot host access** lets the launcher run on secure `hubspot.com` subdomains and navigate between HubSpot product pages. HS Nav does not request access to non-HubSpot sites.
 
-1. **`activeTab`**: Allows the extension to access the current tab’s URL to determine the appropriate HubSpot navigation (Account ID).
-2. **`storage`**: Allows the extension to save user preferences locally in your browser.
+## Control and deletion
 
-These permissions are strictly used to enable the intended functionality of the extension and do not involve the collection or transmission of data.
+Users can edit or reset custom destinations, favorites, and recents in HS Nav settings. Uninstalling the extension removes its local browser data; Chrome controls deletion and retention of any synced copy. Browser permissions can be reviewed or revoked in Chrome settings.
 
----
+Performance RevOps LLC does not hold a separate copy of this data and therefore cannot retrieve or delete data stored only by the user's browser or Chrome account.
 
-## Third-Party Services
+## Changes
 
-HS Nav does not integrate with or rely on any third-party services. All functionality is self-contained within the Chrome browser.
+Material changes will be published with an updated date in this policy and, where applicable, in the Chrome Web Store listing.
 
----
+## Contact
 
-## Your Privacy Rights
-
-As HS Nav does not collect any personal data, there is no personal information to access, modify, or delete. You maintain full control over the extension by:
-
-- **Managing Permissions**: You can review or revoke the extension's permissions in your browser settings.
-- **Uninstalling the Extension**: If you no longer wish to use HS Nav, you can remove it from Chrome at any time.
-
----
-
-## Changes to This Policy
-
-We may update this Privacy Policy from time to time to reflect changes in the extension or applicable laws. Any updates will be posted on the Chrome Web Store page for the extension. The "Effective Date" at the top of this policy will indicate the date of the latest revision.
-
----
-
-## Contact Us
-
-If you have any questions or concerns about this Privacy Policy or the HS Nav extension, please contact us at:
-
-**Performance RevOps LLC**  
-Email: <dan@performancerevops.com>  
-
----
-
-By using HS Nav, you agree to this Privacy Policy. Thank you for trusting us to enhance your HubSpot experience!
+Questions about this policy can be sent to [dan@performancerevops.com](mailto:dan@performancerevops.com).

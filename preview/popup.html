@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HS Nav popup preview</title>
+  <link rel="icon" href="../dist/icons/icon16.png" sizes="16x16">
+  <style>
+    :root { font: 15px/1.5 Inter, ui-sans-serif, system-ui, sans-serif; color: #17324d; background: #f7f9fb; }
+    body { margin: 0; }
+    main { width: min(980px, calc(100% - 48px)); margin: 70px auto; }
+    header { padding-bottom: 24px; border-bottom: 1px solid #dce4ea; }
+    h1 { margin: 0 0 8px; font-size: 34px; }
+    p { max-width: 640px; margin: 0; color: #50677c; }
+    nav { display: flex; gap: 26px; margin: 24px 0; }
+    a { color: #0f7f86; font-weight: 650; }
+    section { padding: 26px 0; border-top: 1px solid #dce4ea; }
+    h2 { margin: 0 0 8px; font-size: 19px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>HubSpot workspace</h1>
+      <p>This neutral page provides realistic browser context for the HS Nav command popup preview.</p>
+    </header>
+    <nav aria-label="Workspace navigation">
+      <a href="#">Home</a>
+      <a href="#">Contacts</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+    <section>
+      <h2>Recently viewed</h2>
+      <p>Use HS Nav to jump to another destination without leaving the keyboard.</p>
+    </section>
+  </main>
+  <script type="module" src="popup.mjs?v=5"></script>
+</body>
+</html>
