@@ -11,7 +11,7 @@ Thank you for helping improve HS Nav.
 
 ## Development setup
 
-You need Node.js 22 and Chrome 120 or newer.
+You need Node.js 24 and Chrome 120 or newer.
 
 ```bash
 npm ci
