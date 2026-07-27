@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support and questions
+    url: https://github.com/danguenet/hs-nav/discussions
+    about: Ask for help or discuss usage with the community.
+  - name: Security or privacy report
+    url: https://github.com/danguenet/hs-nav/blob/main/SECURITY.md
+    about: Read the private reporting instructions before sharing sensitive details.

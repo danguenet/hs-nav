@@ -1,94 +1,80 @@
 # HS Nav
 
-Quickly navigate within HubSpot.
+[![Build and test](https://github.com/danguenet/hs-nav/actions/workflows/build-and-zip.yml/badge.svg)](https://github.com/danguenet/hs-nav/actions/workflows/build-and-zip.yml)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-Install-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/hs-nav/kgnoogdidhnefkepigajbifecfhajged)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![search.png](https://github.com/danguenet/hs-nav/blob/main/icons/search.png)
+Keyboard-first navigation for HubSpot.
 
-HubSpot's default search is great for finding records, but not for other types of navigation. It can take multiple clicks to locate "Lists," "Campaigns," or other key sections of the app. **HS Nav** is a Chrome extension designed to solve that problem. With a simple shortcut, you can pull up a search bar and jump directly to where you need to go.
+![HS Nav launcher showing HubSpot destinations](docs/assets/search.png)
 
----
-
-## Default Shortcuts
-
-- **Open HS Nav**:
-  - Windows/Linux: `Ctrl+Shift+K`
-  - macOS: `Command+Shift+K`
-- **Default HubSpot Search**:
-  - Windows/Linux: `Ctrl+K`
-  - macOS: `Command+K`
-
-If you're looking for the **default HubSpot search** to find specific records, use `Command+K` on macOS or `Ctrl+K` on other systems.  
-To quickly **navigate** to "Lists," "Contacts," "Deals," or any other major section in HubSpot, simply add a `Shift` to that combination to activate **HS Nav**.
-
----
+HubSpot's search is excellent for records, but reaching tools such as Segments, Campaigns, or Workflows can still take several clicks. HS Nav adds a fast launcher for product destinations, custom links, favorites, and recent destinations.
 
 ## Features
 
-- **Quick Search Navigation**:
-  - Instantly search for key HubSpot sections like "Lists," "Contacts," "Deals," and more.
-  - Jump to your destination without hunting through menus.
-
-- **Customizable Links**:
-  - Easily add your own shortcuts for frequently used pages.
-  - Save time by tailoring the extension to your workflow.
-
-- **Smooth Integration**:
-  - Works seamlessly within the HubSpot app.
-  - Extension only works within the app.hubspot.com.
-
-- **Simple UI**:
-  - A lightweight search bar that appears on demand.
-  - Autocomplete options to help you find the right page faster.
-  - Can click on the chrome extension icon to pull up search as well.
-
----
+- Ranked, typo-tolerant search across maintained HubSpot destinations.
+- Keyboard navigation, favorites, and recent destinations.
+- Custom links that can keep or reuse a HubSpot subdomain and account ID.
+- Import, export, validation, and reset tools for custom destinations.
+- Support for secure regional and product-specific `hubspot.com` subdomains.
+- Feedback when a destination requires account selection, is unavailable, or may have moved.
+- A responsive, accessible launcher isolated from HubSpot page styles.
 
 ## Installation
 
-1. Download the HS Nav extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/hs-nav/kgnoogdidhnefkepigajbifecfhajged).
-2. Enable the extension in Chrome.
-3. Start navigating HubSpot faster than ever!
+### Chrome Web Store
 
----
+Install [HS Nav from the Chrome Web Store](https://chromewebstore.google.com/detail/hs-nav/kgnoogdidhnefkepigajbifecfhajged). HS Nav requires Chrome 120 or newer.
 
-## How It Works
+### From source
 
-1. **Activate the Search Bar**:  
-   Press `Ctrl+Shift+K` (Windows/Linux) or `Command+Shift+K` (macOS) or click the Chrome Extension icon to bring up the search bar.
+```bash
+git clone https://github.com/danguenet/hs-nav.git
+cd hs-nav
+npm ci
+npm run build
+```
 
-2. **Search for a Section**:  
-   Start typing the name of a HubSpot section (e.g., "Lists," "Contacts," "Deals") and select the result from the suggestions.
+Open `chrome://extensions`, enable **Developer mode**, choose **Load unpacked**, and select the generated `dist/` directory.
 
-3. **Navigate Instantly**:  
-   Hit `Enter` to jump directly to the selected section.
+## Usage
 
-4. **Add Custom Links** *(Optional)*:  
-   Use the extension options to add or update shortcuts to tailor the experience to your needs.
+| Action | Windows/Linux | macOS |
+| --- | --- | --- |
+| Open HS Nav | `Ctrl+Shift+K` | `Command+Shift+K` |
+| Open HubSpot's record search | `Ctrl+K` | `Command+K` |
 
----
+You can also open HS Nav from its toolbar icon. Chrome lets you customize extension shortcuts at `chrome://extensions/shortcuts`.
 
-## Contributions
+To add a custom link, open the extension settings and paste a secure HubSpot URL. You can keep the exact URL or opt in to following the current HubSpot subdomain, account, or both.
 
-I am open to contributions on this project. The easiest contribution is updating the default links in the project. You have two options on how to do that. 
+## Privacy and permissions
 
-1. Pull Request (Preferred)
-   - Open the [navigation.json file](https://github.com/danguenet/hs-nav/blob/main/navigation.json).
-   - Fork the repository and make any necessary changes to the navigation.json.
-   - Create a pull request that describes the link(s) you’ve added or updated.
+HS Nav has no server, analytics, or advertising. It uses Chrome storage for preferences and destination history, and requests access only to secure HubSpot subdomains. See the [privacy policy](PRIVACY_POLICY.md) for the complete data-handling and permission details.
 
-2. Issue
-   - Open a [new issue](https://github.com/danguenet/hs-nav/issues).
-   - Clearly outline what link is missing or incorrect.
-   - Provide the correct or updated URL.
+## Development
 
-I’m also interested in improving the overall user experience (UX). However, before you invest time in a UX change:
+Development requires Node.js 22 and Chrome 120 or newer.
 
-1. Reach out first
-   - Create an issue or start a discussion describing the proposed UX change.
-   - Let’s confirm that this direction is something we want to pursue.
+```bash
+npm ci
+npm run check
+```
 
-2. Pull Request
-   - Once we agree on a solution or approach, you can create your pull request.
-   - Include details on what has changed and why.
+Runtime modules live in `src/`, static extension files in `extension/`, and the canonical route catalog in `catalog/`. `npm run build` produces the complete Manifest V3 extension in `dist/`.
 
-Thank you for helping improve this project! If you have any questions or concerns, feel free to open an issue or start a discussion.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution requirements and [docs/MAINTAINING.md](docs/MAINTAINING.md) for route-audit and release procedures.
+
+## Contributing and support
+
+Contributions are welcome. Please use the repository's issue templates for bugs, missing or stale routes, and feature requests. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+- For usage questions, see [SUPPORT.md](SUPPORT.md).
+- For security or privacy concerns, follow [SECURITY.md](SECURITY.md) and do not open a public issue.
+- Project changes are documented in [CHANGELOG.md](CHANGELOG.md).
+
+## License and trademarks
+
+HS Nav is available under the [MIT License](LICENSE).
+
+HS Nav is an independent open-source project. It is not affiliated with, endorsed by, or sponsored by HubSpot, Inc. HubSpot and its product names are trademarks of their respective owners.

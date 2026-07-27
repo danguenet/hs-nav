@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HS Nav settings</title>
+  <link rel="icon" href="icons/icon16.png" sizes="16x16">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/controls.css">
+  <link rel="stylesheet" href="styles/shortcut.css">
+  <link rel="stylesheet" href="styles/drawer.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+  <div class="settings-shell">
+    <aside class="sidebar" aria-label="Settings navigation">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="" width="36" height="36">
+        <span>HS Nav</span>
+      </div>
+      <p class="sidebar-label">Settings</p>
+      <nav>
+        <button type="button" class="nav-item is-active" data-view="destinations" aria-current="page">Destinations</button>
+        <button type="button" class="nav-item" data-view="backup">Data &amp; backup</button>
+        <button type="button" class="nav-item" data-view="personalization">Personalization</button>
+        <button type="button" class="nav-item" data-view="shortcut">Shortcut</button>
+      </nav>
+    </aside>
+
+    <main class="settings-main">
+      <div id="applicationStatus" class="application-status" role="alert" hidden>
+        <span id="applicationStatusMessage"></span>
+        <button type="button" id="retryStart" class="secondary">Try again</button>
+      </div>
+      <section class="view is-active" id="view-destinations" aria-labelledby="destinations-heading">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Navigation catalog</p>
+            <h1 id="destinations-heading">Destinations</h1>
+            <p>Browse maintained routes and manage the custom destinations that take priority over them.</p>
+          </div>
+          <button type="button" id="addRoute" class="primary">Add destination</button>
+        </header>
+
+        <div class="toolbar">
+          <label class="search-field">
+            <span class="sr-only">Search destinations</span>
+            <input id="routeSearch" type="search" placeholder="Search keywords or paths…" autocomplete="off">
+          </label>
+          <label class="type-filter">
+            <span>Type</span>
+            <select id="routeTypeFilter">
+              <option value="all">All</option>
+              <option value="default">Default</option>
+              <option value="custom">Custom</option>
+              <option value="override">Overrides default</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="table-shell" aria-live="polite">
+          <div class="route-table-header" aria-hidden="true">
+            <span>Keyword</span><span>HubSpot URL or path</span><span>Type</span><span>Actions</span>
+          </div>
+          <div id="routeList" class="route-list"></div>
+          <div class="table-footer"><span id="visibleCount"></span><span>Custom routes override matching defaults.</span></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-backup" aria-labelledby="backup-heading" hidden>
+        <header class="page-header compact">
+          <div>
+            <p class="eyebrow">Data management</p>
+            <h1 id="backup-heading">Data &amp; backup</h1>
+            <p>Move your custom destinations between Chrome profiles or restore a saved configuration.</p>
+          </div>
+        </header>
+        <div class="transfer-stack">
+          <section class="transfer-card export-card" aria-labelledby="export-heading">
+            <div>
+              <p class="eyebrow">Export</p>
+              <h2 id="export-heading">Create a backup</h2>
+              <p>Save your custom destinations and favorites as portable JSON.</p>
+            </div>
+            <div class="button-row">
+              <button type="button" id="exportData" class="secondary">Show export JSON</button>
+              <button type="button" id="downloadFile" class="secondary">Download JSON</button>
+            </div>
+          </section>
+
+          <section class="transfer-card import-card" aria-labelledby="import-heading">
+            <div class="transfer-card-intro">
+              <p class="eyebrow">Import</p>
+              <h2 id="import-heading">Restore from a backup</h2>
+              <p>Load backup data, then review exactly what will change before applying it.</p>
+            </div>
+
+            <div class="import-step">
+              <span class="step-number" aria-hidden="true">1</span>
+              <div class="step-content">
+                <div class="step-heading">
+                  <div>
+                    <h3>Load backup data</h3>
+                    <p id="transferHelp">Choose a JSON file, or paste backup JSON into the editor.</p>
+                  </div>
+                  <button type="button" id="uploadFile" class="secondary">Choose JSON file</button>
+                  <input type="file" id="uploadInput" accept=".json,application/json" hidden>
+                </div>
+                <label for="transferData">Backup JSON</label>
+                <textarea id="transferData" spellcheck="false" aria-describedby="transferHelp" placeholder="Paste HS Nav backup JSON here."></textarea>
+                <p id="transferStatus" class="status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="import-step review-step">
+              <span class="step-number" aria-hidden="true">2</span>
+              <div class="step-content">
+                <div class="step-heading">
+                  <div>
+                    <h3>Review and apply</h3>
+                    <p>Nothing changes until you review the preview and confirm.</p>
+                  </div>
+                  <button type="button" id="importData" class="primary" disabled>Preview changes</button>
+                </div>
+                <label class="import-mode" for="importMode">
+                  <span>Restore behavior</span>
+                  <select id="importMode" aria-describedby="importModeHelp">
+                    <option value="append">Append to current data</option>
+                    <option value="overwrite">Overwrite current data</option>
+                  </select>
+                </label>
+                <p id="importModeHelp" class="import-mode-help">Append keeps current custom destinations and favorites, updating matches. Overwrite replaces both with the backup data.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="danger-zone">
+          <div>
+            <h2>Delete custom destinations</h2>
+            <p>Remove every custom route. Maintained HS Nav defaults will stay available.</p>
+          </div>
+          <button type="button" id="resetCustom" class="danger">Delete custom destinations</button>
+        </div>
+      </section>
+
+      <section class="view" id="view-personalization" aria-labelledby="personalization-heading" hidden>
+        <header class="page-header compact">
+          <div>
+            <p class="eyebrow">Your experience</p>
+            <h1 id="personalization-heading">Personalization</h1>
+            <p>Manage remembered shortcuts without changing your custom destination catalog.</p>
+          </div>
+        </header>
+        <div class="setting-list">
+          <div class="setting-row favorites-setting">
+            <div class="setting-row-header">
+              <div>
+                <h2 id="favorites-heading">Favorites</h2>
+                <p>Review up to 8 starred destinations or remove them from the empty search view.</p>
+              </div>
+              <button type="button" id="resetFavorites" class="secondary">Reset favorites</button>
+            </div>
+            <div id="favoriteList" class="favorite-list" role="list" aria-labelledby="favorites-heading"></div>
+          </div>
+          <div class="setting-row">
+            <div><h2>Recent destinations</h2><p>Clear the locally stored list of recently opened destinations.</p></div>
+            <button type="button" id="resetRecents" class="secondary">Clear recent destinations</button>
+          </div>
+        </div>
+        <p id="personalizationStatus" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="view" id="view-shortcut" aria-labelledby="shortcut-heading" hidden>
+        <header class="page-header compact">
+          <div>
+            <p class="eyebrow">Keyboard access</p>
+            <h1 id="shortcut-heading">Shortcut</h1>
+            <p>Open HS Nav without leaving the keyboard.</p>
+          </div>
+        </header>
+        <div class="shortcut-panel">
+          <div>
+            <h2>Open HS Nav</h2>
+            <p>Chrome may change this shortcut when another extension uses the same keys.</p>
+          </div>
+          <div class="shortcut-list" aria-label="Default shortcuts by operating system">
+            <div class="shortcut-row">
+              <span class="shortcut-platform">Mac</span>
+              <div class="shortcut-keys" aria-label="Command plus Shift plus K">
+                <kbd>⌘</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>K</kbd>
+              </div>
+            </div>
+            <div class="shortcut-row">
+              <span class="shortcut-platform">Windows</span>
+              <div class="shortcut-keys" aria-label="Control plus Shift plus K">
+                <kbd>Ctrl</kbd><span>+</span><kbd>Shift</kbd><span>+</span><kbd>K</kbd>
+              </div>
+            </div>
+          </div>
+          <p class="shortcut-instruction">To manage shortcuts, open a new Chrome tab and enter <code>chrome://extensions/shortcuts</code> in the address bar.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="drawerLayer" class="drawer-layer" hidden>
+    <button type="button" id="drawerScrim" class="drawer-scrim" aria-label="Close destination editor"></button>
+    <aside id="routeDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header class="drawer-header">
+        <div><p class="eyebrow">Custom route</p><h2 id="drawerTitle">Add destination</h2></div>
+      </header>
+      <p class="drawer-intro">Create a keyword and point it to a HubSpot URL or path.</p>
+      <form id="routeForm" novalidate>
+        <input type="hidden" id="routeId">
+        <label for="keyword">Keyword</label>
+        <input id="keyword" maxlength="80" autocomplete="off" required placeholder="e.g. contacts">
+        <p class="field-help">A matching keyword replaces the default HS Nav destination.</p>
+
+        <div class="field-label-row">
+          <label for="path">HubSpot URL or path</label>
+          <button type="button" id="insertInstanceId" class="instance-button">Insert INSTANCE_ID</button>
+        </div>
+        <input id="path" autocomplete="off" required aria-describedby="pathHelp pathPreview destinationBehaviorHelp" placeholder="/contacts/INSTANCE_ID/objects/0-1">
+        <p class="field-help" id="pathHelp">Optional: adapt the saved destination to the current HubSpot tab.</p>
+
+        <div class="destination-behavior" role="group" aria-label="Adapt destination (optional)">
+          <button type="button" id="useCurrentSubdomain" class="instance-button" aria-pressed="false">Turn into path</button>
+          <button type="button" id="replaceInstanceId" class="instance-button" aria-pressed="false">Replace ID with variable</button>
+        </div>
+
+        <div class="path-preview" id="pathPreview" aria-live="polite">
+          <div class="path-preview-header">
+            <span class="path-preview-label">Saved destination</span>
+            <span class="path-mode" id="pathMode" hidden></span>
+          </div>
+          <code class="path-preview-value" id="pathPreviewValue">Enter a HubSpot URL or path to preview it.</code>
+        </div>
+        <p class="field-help destination-help" id="destinationBehaviorHelp">A path uses the current HubSpot tab’s subdomain. <code>INSTANCE_ID</code> uses that tab’s current account ID.</p>
+        <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+        <div class="drawer-actions">
+          <button type="button" id="cancelEdit" class="secondary">Cancel</button>
+          <button type="submit" class="primary">Save destination</button>
+        </div>
+      </form>
+    </aside>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+@media (max-width: 1200px) {
+  .route-table-header,
+  .route-row {
+    grid-template-columns: minmax(135px, 1fr) minmax(210px, 1.6fr) 120px 160px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .route-table-header {
+    display: none;
+  }
+
+  .route-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 5px 16px;
+    align-items: start;
+    padding: 17px 18px;
+  }
+
+  .route-keyword,
+  .route-path {
+    grid-column: 1;
+  }
+
+  .route-type,
+  .route-actions {
+    grid-column: 2;
+  }
+
+  .route-type {
+    grid-row: 1;
+  }
+
+  .route-actions {
+    grid-row: 2 / span 2;
+    align-self: end;
+  }
+}
+
+@media (max-width: 840px) {
+  .settings-shell {
+    display: block;
+  }
+
+  .sidebar {
+    position: static;
+    display: block;
+    height: auto;
+    padding: 16px 20px 14px;
+  }
+
+  .brand {
+    margin: 0 0 14px;
+  }
+
+  .sidebar-label {
+    display: none;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+  }
+
+  .nav-item {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .settings-main {
+    padding: 38px 22px 64px;
+  }
+}
+
+@media (max-width: 700px) {
+  .settings-main {
+    padding: 30px 16px 54px;
+  }
+
+  .page-header {
+    display: block;
+  }
+
+  .page-header .primary {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .route-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .route-keyword,
+  .route-path,
+  .route-type,
+  .route-actions {
+    grid-column: 1;
+  }
+
+  .route-type,
+  .route-actions {
+    grid-row: auto;
+  }
+
+  .route-actions {
+    justify-content: flex-start;
+    margin-top: 5px;
+  }
+
+  .table-footer,
+  .danger-zone,
+  .setting-row,
+  .setting-row-header,
+  .export-card,
+  .step-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .setting-row-header {
+    gap: 18px;
+  }
+
+  .favorite-item {
+    padding-inline: 20px;
+  }
+
+  .favorite-empty {
+    padding-inline: 20px;
+  }
+
+  .transfer-card {
+    padding: 22px 20px;
+  }
+
+  .export-card .button-row,
+  .export-card .button-row button,
+  .step-heading > button {
+    width: 100%;
+  }
+
+  .import-step {
+    gap: 10px;
+  }
+
+  .shortcut-row {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .drawer {
+    width: 100%;
+    padding: 24px 20px;
+  }
+
+}
+
+@media (max-width: 340px) {
+  .field-label-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .sidebar,
+  .nav-item.is-active,
+  .primary,
+  .toast {
+    forced-color-adjust: none;
+  }
+
+  .route-type,
+  .path-preview {
+    border: 1px solid CanvasText;
+  }
+}
