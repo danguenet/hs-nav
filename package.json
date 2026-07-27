@@ -19,9 +19,9 @@
     "productivity"
   ],
   "type": "module",
-  "packageManager": "npm@10.9.7",
+  "packageManager": "npm@11.18.0",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
