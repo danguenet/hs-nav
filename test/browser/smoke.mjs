@@ -69,14 +69,22 @@ async function testPopup(browser, origin) {
   assert.equal(await initialOptions.nth(2).evaluate((option) => getComputedStyle(option).borderBottomWidth), "0px");
   assert.equal(await initialOptions.last().evaluate((option) => getComputedStyle(option).borderBottomWidth), "0px");
 
+  const initialOpenButtons = page.locator(".option-open");
+  const initialFavoriteButtons = page.locator(".favorite");
+  assert.equal(await initialFavoriteButtons.first().getAttribute("tabindex"), "-1");
+  await search.press("Tab");
+  assert.equal(await activeLabel(page), await initialOpenButtons.nth(0).getAttribute("aria-label"));
+  await page.keyboard.press("Tab");
+  assert.equal(await activeLabel(page), await initialOpenButtons.nth(1).getAttribute("aria-label"));
+  await page.keyboard.press("Shift+Tab");
+  assert.equal(await activeLabel(page), await initialOpenButtons.nth(0).getAttribute("aria-label"));
+
   await search.fill("contacts");
   const open = page.getByRole("button", { name: "Open contacts", exact: false });
   await open.waitFor();
   await search.press("ArrowDown");
   assert.match(await activeLabel(page), /^Open contacts$/i);
 
-  await page.keyboard.press("Tab");
-  assert.match(await activeLabel(page), /Remove Contacts from favorites/i);
   await page.getByRole("button", { name: /Remove Contacts from favorites/i }).click();
   const addFavorite = page.getByRole("button", { name: /Add Contacts to favorites/i });
   await addFavorite.waitFor();
@@ -264,11 +272,13 @@ async function testSettings(browser, origin) {
         pageHeader: getComputedStyle(document.querySelector(".page-header")).display,
         tableHeader: getComputedStyle(document.querySelector(".route-table-header")).display,
         toolbarColumns: getComputedStyle(document.querySelector(".toolbar")).gridTemplateColumns.split(" ").length,
-        routeColumns: getComputedStyle(document.querySelector(".route-row")).gridTemplateColumns.split(" ").length
+        routeColumns: getComputedStyle(document.querySelector(".route-row")).gridTemplateColumns.split(" ").length,
+        routeTypeAlignment: getComputedStyle(document.querySelector(".route-type")).justifySelf
       }
     }));
     assert.ok(sizes.content <= sizes.viewport, `${width}px settings layout overflows by ${sizes.content - sizes.viewport}px`);
     assert.equal(layout.tableHeader, width > 1080 ? "grid" : "none");
+    if (width <= 1080) assert.equal(layout.routeTypeAlignment, "end");
     if (width <= 700) {
       assert.equal(layout.pageHeader, "block");
       assert.equal(layout.toolbarColumns, 1);

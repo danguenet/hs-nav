@@ -32,12 +32,13 @@ test("the overlay uses a search field followed by semantic, independently action
   }
   assert.doesNotMatch(source, /combobox|listbox|aria-activedescendant/);
   assert.match(source, /favorite\.textContent = isFavorite \? "★" : "☆"/);
-  assert.match(source, /favorite\.tabIndex = 0/);
+  assert.match(source, /favorite\.tabIndex = -1/);
   assert.match(source, /openButton\.setAttribute\("aria-label", `Open \$\{route\.keyword\}`\)/);
   assert.match(source, /favorite\.setAttribute\("aria-pressed"/);
   assert.match(source, /focusRoute\(event\.key === "ArrowDown" \? 0 : results\.length - 1\)/);
   assert.match(source, /if \(previousFocus\?\.isConnected\) previousFocus\.focus\(\)/);
-  assert.match(source, /Keyboard shortcuts: Up and Down to navigate, Tab for actions, Enter to open, Escape to close/);
+  assert.match(source, /Keyboard shortcuts: Up, Down, or Tab to navigate, Enter to open, Escape to close/);
+  assert.match(source, /addHint\(hints, \[\["↑", "↓"\], \["Tab"\]\], "Navigate"\)/);
   assert.match(source, /addGroupLabel\("Favorites"\)/);
   assert.match(source, /addGroupLabel\("Recents"\)/);
   assert.doesNotMatch(source, /\bPin(?:ned)?\b|\bUnpin\b|All destinations/);

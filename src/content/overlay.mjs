@@ -138,9 +138,8 @@ export function createOverlay({ getState, onNavigate, onOpenOptions, onRetry, on
     footer.className = "footer";
     const hints = document.createElement("span");
     hints.className = "hints";
-    hints.setAttribute("aria-label", "Keyboard shortcuts: Up and Down to navigate, Tab for actions, Enter to open, Escape to close");
-    addHint(hints, [["↑", "↓"]], "Navigate");
-    addHint(hints, [["Tab"]], "Actions");
+    hints.setAttribute("aria-label", "Keyboard shortcuts: Up, Down, or Tab to navigate, Enter to open, Escape to close");
+    addHint(hints, [["↑", "↓"], ["Tab"]], "Navigate");
     addHint(hints, [["Enter"]], "Open");
     addHint(hints, [["Esc"]], "Close");
     const settings = document.createElement("button");
@@ -284,7 +283,7 @@ export function createOverlay({ getState, onNavigate, onOpenOptions, onRetry, on
       const favorite = document.createElement("button");
       favorite.className = "favorite";
       favorite.type = "button";
-      favorite.tabIndex = 0;
+      favorite.tabIndex = -1;
       const id = routeIdentity(route);
       const isFavorite = state.favoriteIds.includes(id);
       favorite.textContent = isFavorite ? "★" : "☆";
@@ -337,7 +336,7 @@ function addHint(container, keyGroups, label) {
   keyGroups.forEach((keys, index) => {
     if (index) {
       const separator = document.createElement("span");
-      separator.textContent = "/";
+      separator.textContent = "or";
       separator.setAttribute("aria-hidden", "true");
       hint.append(separator);
     }

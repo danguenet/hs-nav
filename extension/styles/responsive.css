@@ -30,6 +30,7 @@
 
   .route-type {
     grid-row: 1;
+    justify-self: end;
   }
 
   .route-actions {
