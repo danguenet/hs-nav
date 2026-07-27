@@ -44,4 +44,4 @@ npm ci
 npm run check
 ```
 
-Follow [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) to package, inspect, tag, and publish the reviewed commit.
+Follow [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) to inspect and tag the reviewed commit. The tag workflow validates `v<version>` against the synchronized project versions, then promotes the tested workflow artifact into a GitHub Release without rebuilding it.

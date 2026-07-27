@@ -2,14 +2,22 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-test("source manifest references package-root files and requests only the intended permissions", async () => {
+test("release versions stay synchronized", async () => {
   const manifest = JSON.parse(await readFile(new URL("../extension/manifest.json", import.meta.url), "utf8"));
   const packageJson = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
+  const packageLock = JSON.parse(await readFile(new URL("../package-lock.json", import.meta.url), "utf8"));
+
+  assert.equal(manifest.version, packageJson.version);
+  assert.equal(packageLock.version, packageJson.version);
+  assert.equal(packageLock.packages[""].version, packageJson.version);
+});
+
+test("source manifest references package-root files and requests only the intended permissions", async () => {
+  const manifest = JSON.parse(await readFile(new URL("../extension/manifest.json", import.meta.url), "utf8"));
   assert.deepEqual(manifest.permissions, ["storage"]);
   assert.equal(manifest.minimum_chrome_version, "120");
   assert.deepEqual(manifest.content_scripts[0].matches, ["https://*.hubspot.com/*"]);
   assert.deepEqual(manifest.host_permissions, ["https://*.hubspot.com/*"]);
-  assert.equal(manifest.version, packageJson.version);
   assert.equal(manifest.background.service_worker, "background.js");
   assert.deepEqual(manifest.content_scripts[0].js, ["contentScript.js"]);
   assert.equal(manifest.options_page, "options.html");
