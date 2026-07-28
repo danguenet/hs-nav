@@ -1,0 +1,12 @@
+{
+  "generated": "2026-07-28",
+  "format": "PNG",
+  "color": "24-bit RGB, no alpha",
+  "assets": [
+    { "file": "search.png", "width": 1280, "height": 800, "purpose": "Search screenshot" },
+    { "file": "settings.png", "width": 1280, "height": 800, "purpose": "Settings screenshot" },
+    { "file": "promo-small.png", "width": 440, "height": 280, "purpose": "Small promo tile" },
+    { "file": "promo-marquee.png", "width": 1400, "height": 560, "purpose": "Marquee promo tile" },
+    { "file": "hs-nav-demo.mp4", "width": 1920, "height": 1080, "durationSeconds": 52.36, "codec": "H.264", "purpose": "YouTube demo video" }
+  ]
+}
