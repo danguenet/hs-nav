@@ -1,4 +1,9 @@
+<div align="center">
+  <img src="extension/icons/icon128.png" alt="HS Nav icon" width="96" height="96">
+
 # HS Nav
+
+**Keyboard-first navigation for HubSpot.**
 
 [![Build and test](https://github.com/danguenet/hs-nav/actions/workflows/build-and-zip.yml/badge.svg)](https://github.com/danguenet/hs-nav/actions/workflows/build-and-zip.yml)
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-Install-4285F4?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/hs-nav/kgnoogdidhnefkepigajbifecfhajged)
@@ -7,7 +12,7 @@
 [![Node.js 24](https://img.shields.io/badge/Node.js-24-339933?logo=nodedotjs&logoColor=white)](.nvmrc)
 [![Chrome MV3](https://img.shields.io/badge/Chrome-Manifest_V3-4285F4?logo=googlechrome&logoColor=white)](extension/manifest.json)
 
-Keyboard-first navigation for HubSpot.
+</div>
 
 ![HS Nav launcher showing HubSpot destinations](docs/assets/search.png)
 
